@@ -16,14 +16,18 @@
 
             <v-col cols="12" sm="6" md="2">
               <v-checkbox-btn
-                v-model="webPushEnable"
+                v-model="webPushFormsEnable"
                 :label="channels[0]"
                 class="pt-2"
               ></v-checkbox-btn>
             </v-col>
 
             <v-col cols="12" sm="6" md="2">
-              <v-checkbox-btn :label="channels[1]" class="pt-2"></v-checkbox-btn>
+              <v-checkbox-btn
+                v-model="emailFormsEnable"
+                :label="channels[1]"
+                class="pt-2"
+              ></v-checkbox-btn>
             </v-col>
 
             <v-col cols="12" sm="6" md="2">
@@ -32,8 +36,16 @@
 
             <v-col cols="12" sm="12">
               <v-expand-transition>
-                <div v-show="webPushEnable">
+                <div v-show="webPushFormsEnable">
                   <WebPushFormsVue></WebPushFormsVue>
+                </div>
+              </v-expand-transition>
+            </v-col>
+
+            <v-col cols="12" sm="12">
+              <v-expand-transition>
+                <div v-show="emailFormsEnable">
+                  <EmailFormsVue></EmailFormsVue>
                 </div>
               </v-expand-transition>
             </v-col>
@@ -43,8 +55,8 @@
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn color="blue-darken-1" variant="text" @click="dialog = false"> Close </v-btn>
-        <v-btn color="blue-darken-1" variant="text" @click="dialog = false"> Save </v-btn>
+        <v-btn color="blue-darken-1" variant="text" @click="dialog = false"> Fechar </v-btn>
+        <v-btn color="blue-darken-1" variant="text" @click="dialog = false"> Salvar </v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
@@ -53,9 +65,11 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import WebPushFormsVue from '@/components/forms/WebPushForms.vue';
+import EmailFormsVue from '@/components/forms/EmailForms.vue';
 
 const dialog = ref(false);
-const webPushEnable = ref(false);
+const webPushFormsEnable = ref(false);
+const emailFormsEnable = ref(false);
 
 const channels = ref(['Web Push', 'E-mail', 'SMS']);
 </script>
