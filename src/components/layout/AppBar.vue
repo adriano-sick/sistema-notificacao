@@ -14,6 +14,8 @@
       <v-list density="compact" nav>
         <v-list-item prepend-icon="mdi-folder" title="My Files" value="myfiles"></v-list-item>
         <AddAppDialog></AddAppDialog>
+
+        <NotificationHistoryView></NotificationHistoryView>
         <v-list-item
           prepend-icon="mdi-account-multiple"
           title="Shared with me"
@@ -29,6 +31,7 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
 import AddAppDialog from '@/components/dialog/AddAppDialog.vue';
+import NotificationHistoryView from '@/views/NotificationHistoryView.vue';
 
 const router = useRouter();
 

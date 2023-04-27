@@ -9,7 +9,7 @@
         <v-row>
           <v-col cols="12" sm="6">
             <v-text-field
-              v-model="webpushForm.websiteName"
+              v-model="webPushForm.websiteName"
               label="Nome do site*"
               required
             ></v-text-field>
@@ -17,7 +17,7 @@
 
           <v-col cols="12" sm="6">
             <v-text-field
-              v-model="webpushForm.webAddress"
+              v-model="webPushForm.webAddress"
               label="Endereço Web*"
               required
             ></v-text-field>
@@ -27,7 +27,7 @@
 
           <v-col cols="12">
             <v-textarea
-              v-model="webpushForm.permissionText"
+              v-model="webPushForm.permissionText"
               label="Texo de permissão de notificação"
               counter
               no-resize
@@ -38,24 +38,24 @@
 
           <v-col cols="12" sm="4">
             <v-text-field
-              v-model="webpushForm.allowButton"
+              v-model="webPushForm.allowButton"
               label="Texto botão permitir"
             ></v-text-field>
           </v-col>
 
           <v-col cols="12" sm="4">
-            <v-text-field v-model="webpushForm.denyButton" label="Texto botão negar"></v-text-field>
+            <v-text-field v-model="webPushForm.denyButton" label="Texto botão negar"></v-text-field>
           </v-col>
 
           <v-divider></v-divider>
 
           <v-col cols="12" sm="6">
-            <v-text-field v-model="webpushForm.titleText" label="Título"></v-text-field>
+            <v-text-field v-model="webPushForm.titleText" label="Título"></v-text-field>
           </v-col>
 
           <v-col cols="12">
             <v-textarea
-              v-model="webpushForm.welcomeText"
+              v-model="webPushForm.welcomeText"
               label="Texo de boas vindas"
               counter
               no-resize
@@ -65,7 +65,7 @@
           </v-col>
           <v-col cols="6">
             <v-text-field
-              v-model="webpushForm.destinationLink"
+              v-model="webPushForm.destinationLink"
               hide-details
               label="Link de destino"
             ></v-text-field>
@@ -96,12 +96,12 @@ const getInitialFormData = () => ({
   destinationLink: ''
 });
 
-const webpushForm = reactive(getInitialFormData());
+const webPushForm = reactive(getInitialFormData());
 
 const textRule = ref([(v: string) => v.length <= 500 || 'Max 500 caracteres']);
 
 const resetUserForm = () => {
-  Object.assign(webpushForm, getInitialFormData());
+  Object.assign(webPushForm, getInitialFormData());
 };
 </script>
 
