@@ -2,6 +2,12 @@
   "extends": "@vue/tsconfig/tsconfig.web.json",
   "include": ["env.d.ts", "src/**/*", "src/**/*.vue"],
   "compilerOptions": {
+    "strict": true,
+    "strictNullChecks": true,
+    "noImplicitThis": false,
+    "noImplicitAny": false,
+    "allowSyntheticDefaultImports": true,
+    "noStrictGenericChecks": true,
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
