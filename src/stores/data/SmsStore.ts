@@ -3,21 +3,27 @@ import type { SmsModel } from "@/corelib/models/SmsModel";
 import { defineStore } from "pinia";
 
 interface InternalStoreStateType {
-smsArray: Array<SmsModel>;
-pagination: PaginationModel;
+smsList: Array<SmsModel>;
+// pagination: PaginationModel;
 }
 
 export const useSmsStore = defineStore('SmsStore',{
     state: (): InternalStoreStateType => ({
-        smsArray: [],
-        pagination: {
-            page: 1,
-            currentRecord: 0,
-            numberOfPages: 0,
-            totalPageRecords: 10,
-            totalRecords: 10
-        }
+        smsList: []
+        // pagination: {
+        //     page: 1,
+        //     currentRecord: 0,
+        //     numberOfPages: 0,
+        //     totalPageRecords: 10,
+        //     totalRecords: 10
+        // }
     }),
-    getters: {},
-    actions: {}
+    getters: {
+        getSmsList: (state: InternalStoreStateType): Array<SmsModel> =>
+            state.smsList,
+        // Pagination: (state: InternalStoreStateType): PaginationModel =>
+        //     state.pagination
+    },
+    actions: {
+    }
 });
