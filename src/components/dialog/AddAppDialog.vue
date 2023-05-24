@@ -1,78 +1,43 @@
 <template>
   <v-dialog v-model="dialog" persistent width="1024">
     <template v-slot:activator="{ props }">
-      <v-list-item
-        prepend-icon="mdi-folder"
-        title="Adicionar novo App"
-        v-bind="props"
-      ></v-list-item>
+      <v-list-item prepend-icon="mdi-folder" title="Produtos" v-bind="props"></v-list-item>
     </template>
     <v-card height="640">
       <v-card-title>
-        <span class="text-h4">Adicionar novo aplicativo</span>
+        <span class="text-h4">Produtos</span>
       </v-card-title>
       <v-card-text>
         <v-container>
           <v-row>
-            <v-col cols="12" sm="6">
-              <v-text-field label="Nome do app*" required></v-text-field>
-            </v-col>
-
-            <v-col cols="12" sm="6" md="2">
-              <v-checkbox-btn
-                v-model="forms.webPushFormEnable"
-                :label="channels[0]"
-                class="pt-2"
-              ></v-checkbox-btn>
-            </v-col>
-
-            <v-col cols="12" sm="6" md="2">
-              <v-checkbox-btn
-                v-model="forms.emailFormEnable"
-                :label="channels[1]"
-                class="pt-2"
-              ></v-checkbox-btn>
-            </v-col>
-
-            <v-col cols="12" sm="6" md="2">
-              <v-checkbox-btn
-                v-model="forms.smsFormEnable"
-                :label="channels[2]"
-                class="pt-2"
-              ></v-checkbox-btn>
-            </v-col>
-
-            <v-col cols="12" sm="12">
-              <v-expand-transition>
-                <div v-show="forms.webPushFormEnable">
-                  <WebPushFormsVue></WebPushFormsVue>
-                </div>
-              </v-expand-transition>
-            </v-col>
-
-            <v-col cols="12" sm="12">
-              <v-expand-transition>
-                <div v-show="forms.emailFormEnable">
-                  <EmailFormsVue></EmailFormsVue>
-                </div>
-              </v-expand-transition>
-            </v-col>
-
-            <v-col cols="12" sm="12">
-              <v-expand-transition>
-                <div v-show="forms.smsFormEnable">
-                  <SmsFormsVue></SmsFormsVue>
-                </div>
-              </v-expand-transition>
-            </v-col>
+            <ul>
+              <li>
+                <b>ID - Nome - Descrição</b>
+              </li>
+            </ul>
+          </v-row>
+          <v-row>
+            <ul>
+              <li v-for="item in items" :key="item.name">
+                {{ item.id }} - {{ item.name }} - {{ item.descricao }}
+                <v-btn>excluir</v-btn>
+              </li>
+            </ul>
+          </v-row>
+          <br>
+          <v-row>
+            <h3>Adicionar produto:</h3>
+          </v-row>
+          <v-row>
+            <input type="text" placeholder="Nome">
+            <input type="text" placeholder="descrição">
+            <v-btn>adicionar</v-btn>
           </v-row>
         </v-container>
-        <small>*Campos obrigatórios.</small>
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn color="blue-darken-1" variant="text" @click="resetUserForm"> Fechar </v-btn>
-        <v-btn color="blue-darken-1" variant="text" @click="resetUserForm"> Salvar </v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
@@ -83,6 +48,19 @@ import { reactive, ref } from 'vue';
 import WebPushFormsVue from '@/components/forms/WebPushForms.vue';
 import EmailFormsVue from '@/components/forms/EmailForms.vue';
 import SmsFormsVue from '@/components/forms/SmsForms.vue';
+
+const items = 
+  [
+    { name: 'Item1', id: '001', descricao: 'Produto 1' },
+    { name: 'Item2', id: '002', descricao: 'Produto 2' },
+    { name: 'Item3', id: '003', descricao: 'Produto 3' },
+    { name: 'Item4', id: '004', descricao: 'Produto 4' },
+    { name: 'Item5', id: '005', descricao: 'Produto 5' },
+    { name: 'Item6', id: '006', descricao: 'Produto 6' },
+    { name: 'Item7', id: '007', descricao: 'Produto 7' },
+    { name: 'Item8', id: '008', descricao: 'Produto 8' },
+    { name: 'Item9', id: '009', descricao: 'Produto 9' },
+  ]
 
 const dialog = ref(false);
 
